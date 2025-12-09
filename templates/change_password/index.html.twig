@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ChangePasswordController!{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Changement de mot de passe! ✅</h1>
+    <!-- Afficher les messages flash -->
+    <div class="container">
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% for message in app.flashes('error') %}
+            <div class="alert alert-danger">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+        <form method="POST" action="{{ path('app_change_password') }}">
+            <label class="form-label" for="email">Email</label>
+            <input class="form-text" type="email" id="email" name="email" required>
+            <label class="form-label" for="newpassword">Nouveau mot de passe :</label>
+            <input class="form-text" type="password" id="newpassword" name="newpassword" required>
+
+            <button class="btn btn-dark" type="submit">Changer le mot de passe</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
